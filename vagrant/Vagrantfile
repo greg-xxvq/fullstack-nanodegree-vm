@@ -2,8 +2,23 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/ubuntu-16.04"
-  config.vm.box_version = "= 2.3.5"
+  #config.vm.box = "bento/ubuntu-16.04"
+  #config.vm.box_version = "= 2.3.5"
+
+  # [xxvq]: There are errors in the configuration of this machine. 
+  # Please fixthe following errors and try again:
+  # vm:
+  #     * The following settings shouldn't exist: box_version
+  #     * The box 'bento/ubuntu-16.04' could not be found.
+    
+  # [xxvq]: Try my own
+  #config.vm.box = "ubuntu/trusty32"
+  #config.vm.box_url = "file:///mnt/backup/boot/trusty-server-cloudimg-i386-vagrant-disk1.box"
+  # [xxvq]: succes at importing, booting...
+  
+  # [xxvq]: This appears to work 
+  config.vm.box = "ubuntu/xenial32"
+
   config.vm.synced_folder ".", "/vagrant"
   config.vm.network "forwarded_port", guest: 8000, host: 8000, host_ip: "127.0.0.1"
   config.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "127.0.0.1"
